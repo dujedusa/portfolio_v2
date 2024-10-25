@@ -1,0 +1,62 @@
+@import "../../styles/00_settings/settings.scss";
+
+.intro {
+  @include container;
+  padding: $spacing-24x $spacing-8x $spacing-8x $spacing-8x;
+
+  &__wrapper {
+    @include flex($align: center, $gap: $spacing-8x);
+    @include card($max-width: 50rem);
+
+    @include media(sm, max) {
+      @include flex(column-reverse, $align: center, $justify: center);
+    }
+  }
+
+  &-photo {
+    & img {
+      @include size($full-width: true);
+      max-width: 18rem;
+      border-radius: border-radius(circle);
+      width: clamp(14rem, 100%, 18rem);
+
+      @include media(sm, max) {
+        max-width: 12rem;
+      }
+    }
+  }
+
+  &-text {
+    @include flex(column, $align: flex-start, $gap: $spacing-8x);
+
+    & p {
+      @include flex(column);
+      margin: 0;
+
+      & span:first-child {
+        @include typography(inherit, huge);
+      }
+
+      & span:nth-child(2) {
+        @include typography(inherit, xxlarge, bold, small);
+      }
+
+      & span:nth-child(3) {
+        @include typography(inherit, medium);
+        margin-top: 1rem;
+      }
+    }
+
+    & h3 {
+      @include typography(inherit, medium, regular, regular, text);
+    }
+
+    @include media(sm, max) {
+      &,
+      & &__about {
+        text-align: text-align(center);
+        align-items: center;
+      }
+    }
+  }
+}

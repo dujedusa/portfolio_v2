@@ -1,0 +1,68 @@
+@import "../../../../styles/00_settings/settings.scss";
+
+.timeline-item {
+  @include flex(row-reverse, $gap: $spacing-4x);
+  @include position(relative);
+  padding-bottom: $spacing-8x;
+
+  &__content {
+    @include flex(column, $gap: $spacing-2x);
+    @include size($full-width: true);
+
+    @include media(xs, max) {
+      @include size($full-height: true);
+      justify-content: flex-end;
+    }
+  }
+
+  &__timestamp {
+    @include flex($align: center);
+    @include size($full-width: true);
+
+    @include media(xs, max) {
+      @include size($full-height: true);
+      align-items: flex-start;
+      text-align: text-align(center);
+    }
+
+    & span {
+      @include size($full-width: true);
+      @include card;
+    }
+
+    &--empty {
+      display: none;
+    }
+  }
+
+  &__tail {
+    @include absolute(50%);
+    @include size(0.125rem, $full-height: true);
+    content: "";
+    transform: translateX(-50%);
+    background-color: neutral-color(light);
+
+    @include media(xs, max) {
+      @include absolute(0, $top: 50%);
+      @include size($height: 0.125rem, $full-width: true);
+      transform: translateY(-50%);
+    }
+  }
+
+  &__dot {
+    @include flex($align: center);
+    @include position(relative);
+    color: neutral-color(light);
+
+    &::before {
+      @include size(1.5rem, 1.5rem);
+      border-radius: border-radius(circle);
+      content: "";
+      background-color: neutral-color(light);
+    }
+
+    @include media(xs, max) {
+      justify-content: center;
+    }
+  }
+}

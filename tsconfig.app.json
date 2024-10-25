@@ -1,0 +1,59 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@components/button": ["src/shared/components/button/index.ts"],
+      "@components/dialog": ["src/shared/components/dialog/index.ts"],
+      "@components/divider": ["src/shared/components/divider/index.ts"],
+      "@components/footer": ["src/shared/components/footer/index.ts"],
+      "@components/header": ["src/shared/components/header/index.ts"],
+      "@components/icon": ["src/shared/components/icon/index.ts"],
+      "@components/input": ["src/shared/components/input/index.ts"],
+      "@components/overlay": ["src/shared/components/overlay/index.ts"],
+      "@components/spinner": ["src/shared/components/spinner/index.ts"],
+      "@components/timeline": ["src/shared/components/timeline/index.ts"],
+      "@components/timeline-item": [
+        "src/shared/components/timeline/timeline-item/index.ts"
+      ],
+      "@components/toast": ["src/shared/components/toast/index.ts"],
+      "@components/toast-container": [
+        "src/shared/components/toast/toast-container/index.ts"
+      ],
+      "@shared/constants": ["src/shared/constants/index.ts"],
+      "@shared/models": ["src/shared/models/index.ts"],
+      "@shared/services": ["src/shared/services/index.ts"],
+      "@utils": ["src/utils/index.ts"],
+      "@views/about": ["src/views/about/index.ts"],
+      "@views/attribution": ["src/views/attribution/index.ts"],
+      "@views/contact": ["src/views/contact/index.ts"],
+      "@views/error-page": ["src/views/error-page/index.ts"],
+      "@views/experience": ["src/views/experience/index.ts"],
+      "@views/home": ["src/views/home/index.ts"],
+      "@views/intro": ["src/views/intro/index.ts"],
+      "@views/technologies": ["src/views/technologies/index.ts"],
+      "@views/testimonials": ["src/views/testimonials/index.ts"]
+    }
+  },
+  "include": ["src"]
+}

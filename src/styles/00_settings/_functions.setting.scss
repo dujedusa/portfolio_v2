@@ -1,0 +1,134 @@
+// ========================================
+//   FUNCTIONS - Various helper functions
+// ========================================
+
+// -----------------------------------------------------------------------------
+//   LIST-CONTAINS - Checks if an '$item' is contained inside the '$list' list
+// -----------------------------------------------------------------------------
+@function list-contains($list, $item) {
+  @return index($list, $item) != null;
+}
+
+// ------------------------------------------------------------------------
+//   MAP-CONTAINS - Checks if a '$key' is contained inside the '$map' map
+// ------------------------------------------------------------------------
+@function map-contains($map, $key) {
+  @if map-has-key($map, $key) {
+    @return map-get($map, $key);
+  }
+  @warn "Unknown `#{$key}` in the `#{$map}` map.";
+  @return null;
+}
+
+// --------------------------------------------------------------------------------
+//   BACKGROUND COLOR - Returns value for a color name from '$background-colors' map
+// --------------------------------------------------------------------------------
+@function background-color($background-color) {
+  @return map-contains($background-colors, $background-color);
+}
+
+// --------------------------------------------------------------------------------
+//   THEME COLOR - Returns 'hexa' value for a color name from '$theme-colors' map
+// --------------------------------------------------------------------------------
+@function theme-color($theme-color) {
+  @return map-contains($theme-colors, $theme-color);
+}
+
+// ------------------------------------------------------------------------------------
+//   NEUTRAL COLOR - Returns 'hexa' value for a color name from '$neutral-colors' map
+// ------------------------------------------------------------------------------------
+@function neutral-color($neutral-color) {
+  @return map-contains($neutral-colors, $neutral-color);
+}
+
+// --------------------------------------------------------------------------------------
+//   SEMANTIC COLOR - Returns 'hexa' value for a color name from '$semantic-colors' map
+// --------------------------------------------------------------------------------------
+@function semantic-color($semantic-color) {
+  @return map-contains($semantic-colors, $semantic-color);
+}
+
+// ------------------------------------------------------------------------------
+//   TEXT-COLOR - Returns 'hexa' value for a color name from '$text-colors' map
+// ------------------------------------------------------------------------------
+@function text-color($text-color) {
+  @return map-contains($text-colors, $text-color);
+}
+
+// ---------------------------------------------------------------------------
+//   FONT-SIZE - Returns 'rem' value for a $size name from '$font-sizes' map
+// ---------------------------------------------------------------------------
+@function font-size($size) {
+  @return map-contains($font-sizes, $size);
+}
+
+// ------------------------------------------------------------------------------------
+//   FONT-WEIGHT - Returns 'number' value for a $weight name from '$font-weights' map
+// ------------------------------------------------------------------------------------
+@function font-weight($weight) {
+  @return map-contains($font-weights, $weight);
+}
+
+// --------------------------------------------------------------------------------------------
+//   LINE-HEIGHT - Returns 'decimal number' value for a $height name from '$line-heights' map
+// --------------------------------------------------------------------------------------------
+@function line-height($height) {
+  @return map-contains($line-heights, $height);
+}
+
+// -----------------------------------------------------------------------------
+//   FONT-FAMILY - Returns family name for a $family from '$font-families' map
+// -----------------------------------------------------------------------------
+@function font-family($family) {
+  @return map-contains($font-families, $family);
+}
+
+// ------------------------------------------------------------------------
+//   TEXT-ALIGN - Returns value for a $text-align from '$text-aligns' map
+// ------------------------------------------------------------------------
+@function text-align($text-align) {
+  @return map-contains($text-aligns, $text-align);
+}
+
+// ----------------------------------------------------------------------------------------
+//   INTERACTIVE-SIZE - Returns 'px' value for a $size name from '$interactive-sizes' map
+// ----------------------------------------------------------------------------------------
+@function interactive-size($size: full) {
+  @return map-contains($interactive-sizes, $size);
+}
+
+// ---------------------------------------------------------------------------------------------
+//   BORDER-RADIUS - Returns 'px' or percent value for a $value name from '$border-radius' map
+// ---------------------------------------------------------------------------------------------
+@function border-radius($value: normal) {
+  @return map-contains($border-radiuses, $value);
+}
+
+// --------------------------------------------
+//   BORDER - Returns 'border' property value
+// --------------------------------------------
+@function border(
+  $color: $border-color,
+  $width: $border-width,
+  $style: $border-style
+) {
+  @return $width $style $color;
+}
+
+// ----------------------------------------------------
+//   BOX-SHADOW - Returns 'box-shadow' property value
+// ----------------------------------------------------
+@function box-shadow(
+  $x: $box-shadow-x,
+  $y: $box-shadow-y,
+  $blur: $box-shadow-blur,
+  $spread: $box-shadow-spread,
+  $color: $box-shadow-color,
+  $inset: false
+) {
+  $result: $x $y $blur $spread $color;
+  @if $inset {
+    $result: $result inset;
+  }
+  @return $result;
+}

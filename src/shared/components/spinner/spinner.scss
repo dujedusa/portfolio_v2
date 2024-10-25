@@ -1,0 +1,22 @@
+@import "../../../styles/00_settings/settings.scss";
+
+.spinner {
+  @include size($height: 6rem, $width: 6rem);
+  border-top: border(neutral-color(light), 0.25rem);
+  border-right: border(transparent, 0.25rem);
+  border-radius: border-radius(circle);
+  animation: spin 0.75s linear infinite;
+
+  @include media(sm, max) {
+    @include size($height: 4rem, $width: 4rem);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

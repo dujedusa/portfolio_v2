@@ -1,0 +1,7 @@
+@import "../../../styles/00_settings/settings.scss";
+
+.divider {
+  @include flex;
+  @include size($height: 1px, $full-width: true);
+  background-color: neutral-color(dark);
+}

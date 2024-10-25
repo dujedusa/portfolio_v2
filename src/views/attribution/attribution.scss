@@ -1,0 +1,20 @@
+@import "../../styles/00_settings/settings.scss";
+
+.attribution {
+  @include flex(column, $gap: $spacing-4x);
+
+  &__description {
+    @include typography(inherit, regular, $line-height: regular);
+    margin: 0;
+  }
+
+  & ul {
+    @include flex(column, $gap: $spacing-2x);
+    padding-left: $spacing-2x;
+  }
+
+  & li {
+    @include typography(inherit, small, regular, regular);
+    @include flex($align: center, $gap: $spacing-4x);
+  }
+}

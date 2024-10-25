@@ -1,0 +1,64 @@
+@import "../../styles/00_settings/settings.scss";
+
+$icon-size: 8rem;
+$font-size: 12rem;
+
+.error-page {
+  @include flex(column, $justify: center, $align: center);
+  padding: $spacing-8x;
+  min-height: 100vh;
+  font-family: fantasy;
+
+  &__404 {
+    @include flex($align: baseline, $gap: $spacing-4x);
+
+    & span {
+      text-align: text-align(center);
+      font-size: $font-size;
+
+      @include media(sm, max) {
+        font-size: calc($font-size / 2);
+      }
+    }
+
+    & svg {
+      @include size($height: $icon-size, $width: $icon-size);
+      color: gold;
+
+      @include media(sm, max) {
+        @include size(
+          $height: (
+            calc($icon-size / 2),
+          ),
+          $width: (
+            calc($icon-size / 2),
+          )
+        );
+      }
+    }
+  }
+
+  &__text {
+    @include flex(column, $align: center);
+    text-align: text-align(center);
+
+    & button {
+      margin-top: $spacing-8x;
+    }
+  }
+
+  &__title {
+    @include typography(inherit, huge, bold);
+    @include media(sm, max) {
+      font-size: font-size(large);
+    }
+  }
+
+  &__subtitle {
+    @include typography(inherit, xlarge, regular, small);
+    color: neutral-color(primary);
+    @include media(sm, max) {
+      font-size: font-size(medium);
+    }
+  }
+}

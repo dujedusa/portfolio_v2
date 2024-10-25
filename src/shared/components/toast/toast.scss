@@ -1,0 +1,86 @@
+@import "../../../styles/00_settings/settings.scss";
+
+$animation-duration: $transition-duration;
+$animation-fill-mode: forwards;
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+}
+
+.toast {
+  $self: &;
+  @include flex($justify: space-between, $gap: $spacing-4x);
+  @include size($height: 4rem);
+  background-color: neutral-color(darker);
+  box-shadow: $box-shadow-hover;
+  padding: $spacing-1x $spacing-4x;
+  border: border(transparent);
+  border-radius: border-radius(large);
+  animation-duration: $animation-duration;
+  animation-fill-mode: $animation-fill-mode;
+
+  &-message {
+    @include flex($align: center, $gap: $spacing-2x);
+
+    & p {
+      @include typography(inherit, small);
+      margin: 0;
+    }
+  }
+
+  &__close-button {
+    all: unset;
+    @include flex($justify: center, $align: center);
+    @include typography(inherit, regular);
+    @include transition(color);
+
+    &:hover,
+    &:focus-visible {
+      color: text-color(secondary);
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  &--success {
+    border-color: semantic-color(success);
+
+    & #{$self}-icon {
+      color: semantic-color(success);
+    }
+  }
+
+  &--error {
+    border-color: semantic-color(error);
+
+    & #{$self}-icon {
+      color: semantic-color(error);
+    }
+  }
+
+  &--enter {
+    animation: toast-enter $animation-duration $animation-fill-mode;
+  }
+
+  &--exit {
+    animation: toast-exit $animation-duration $animation-fill-mode;
+  }
+}

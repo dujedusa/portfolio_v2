@@ -1,0 +1,12 @@
+@import "../../../../styles/00_settings/settings.scss";
+
+.toast-container {
+  @include position(fixed, $top: 5rem, $right: 1rem);
+  @include flex(column, $gap: $spacing-4x);
+  @include size($width: clamp(5rem, 100%, 25rem));
+  z-index: 100;
+
+  @include media(sm, max) {
+    @include size($width: calc(100% - 2rem));
+  }
+}

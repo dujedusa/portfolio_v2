@@ -1,0 +1,28 @@
+@import "../../styles/00_settings/settings.scss";
+
+.technologies {
+  @include container($spacing-16x);
+
+  &__title {
+    @include typography(inherit, huge, bold);
+    text-align: text-align(center);
+  }
+
+  &__icons {
+    @include flex(
+      $justify: center,
+      $align: center,
+      $gsb: 1,
+      $gap: $spacing-16x,
+      $wrap: wrap
+    );
+    @include card($max-width: 50rem);
+  }
+
+  &__icon {
+    @include size($height: 8rem, $width: 8rem);
+    @include media(sm, max) {
+      @include size($height: 6rem, $width: 6rem);
+    }
+  }
+}

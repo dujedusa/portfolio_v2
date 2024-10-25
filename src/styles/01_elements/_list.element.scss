@@ -1,0 +1,10 @@
+// ---------------------------------------------
+//   UNORDERED LIST: Stylings for <ul> element
+// ---------------------------------------------
+ul {
+  @include list-reset();
+}
+
+li {
+  font-weight: font-weight(regular);
+}

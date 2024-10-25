@@ -1,0 +1,28 @@
+// ----------------------------------------------
+//   BODY - default stylings for <body> element
+// ----------------------------------------------
+body {
+  @include flex(column);
+  @include typography(primary, regular, regular, normal, text);
+  min-height: 100vh;
+  margin: 0;
+  background: background-color(primary);
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* *::-webkit-scrollbar-track {
+  background-color: neutral-color(primary);
+  border-radius: $border-radius-base;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: neutral-color(light);
+  border-radius: $border-radius-base;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: neutral-color(dark);
+} */

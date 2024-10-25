@@ -1,0 +1,9 @@
+// ============================================
+//   GLOBAL STYLES - all stylings for the app
+// ============================================
+@import "./root";
+
+@import "./00_settings/settings.scss";
+@import "./01_elements/elements.scss";
+@import "./02_objects/objects.scss";
+@import "./03_utilities/utilities.scss";

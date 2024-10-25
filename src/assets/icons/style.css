@@ -1,0 +1,169 @@
+@font-face {
+  font-family: "icomoon";
+  src: url("fonts/icomoon.eot?eyve8h");
+  src: url("fonts/icomoon.eot?eyve8h#iefix") format("embedded-opentype"),
+    url("fonts/icomoon.ttf?eyve8h") format("truetype"),
+    url("fonts/icomoon.woff?eyve8h") format("woff"),
+    url("fonts/icomoon.svg?eyve8h#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-angular:before {
+  content: "\e900";
+}
+.icon-bars-solid:before {
+  content: "\e901";
+}
+.icon-circle-check-regular:before {
+  content: "\e91e";
+}
+.icon-circle-check-solid:before {
+  content: "\e920";
+}
+.icon-circle-radiation-solid:before {
+  content: "\e921";
+}
+.icon-circle-xmark-regular:before {
+  content: "\e91f";
+}
+.icon-circle-xmark-solid:before {
+  content: "\e922";
+}
+.icon-css:before {
+  content: "\e902";
+}
+.icon-envelope-solid:before {
+  content: "\e903";
+}
+.icon-facebook:before {
+  content: "\e904";
+}
+.icon-git:before {
+  content: "\e905";
+}
+.icon-html:before {
+  content: "\e906";
+}
+.icon-infomedica .path1:before {
+  content: "\e907";
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path2:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path3:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path4:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path5:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path6:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path7:before {
+  content: "\e90d";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path8:before {
+  content: "\e90e";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path9:before {
+  content: "\e90f";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path10:before {
+  content: "\e910";
+  margin-left: -1em;
+  color: rgb(224, 224, 224);
+}
+.icon-infomedica .path11:before {
+  content: "\e911";
+  margin-left: -1em;
+  color: rgb(227, 6, 19);
+}
+.icon-ionic:before {
+  content: "\e912";
+  color: #478aff;
+}
+.icon-js:before {
+  content: "\e913";
+}
+.icon-linkedin:before {
+  content: "\e914";
+}
+.icon-react:before {
+  content: "\e915";
+}
+.icon-stencil:before {
+  content: "\e916";
+}
+.icon-triangle-exclamation-solid:before {
+  content: "\e923";
+}
+.icon-ts .path1:before {
+  content: "\e917";
+  color: rgb(49, 120, 198);
+}
+.icon-ts .path2:before {
+  content: "\e918";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-vs-code .path1:before {
+  content: "\e919";
+  color: rgb(0, 101, 169);
+}
+.icon-vs-code .path2:before {
+  content: "\e91a";
+  margin-left: -1em;
+  color: rgb(0, 122, 204);
+}
+.icon-vs-code .path3:before {
+  content: "\e91b";
+  margin-left: -1em;
+  color: rgb(31, 156, 240);
+}
+.icon-vs-code .path4:before {
+  content: "\e91c";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.25;
+}
+.icon-xmark-solid:before {
+  content: "\e91d";
+}

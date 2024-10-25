@@ -1,0 +1,370 @@
+// ==================================
+//   MIXINS - Various helper mixins
+// ==================================
+
+// -----------------------------------------------
+//   FLEX - Mixin for setting Flexbox properties
+// -----------------------------------------------
+@mixin flex(
+  $direction: false,
+  $justify: false,
+  $align: false,
+  $gsb: false,
+  $gap: false,
+  $wrap: false
+) {
+  display: flex;
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+
+  @if $gsb {
+    flex: $gsb;
+  }
+
+  @if $gap {
+    gap: $gap;
+  }
+
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+}
+
+// --------------------------------------------------------
+//   LIST RESET - Mixin for reseting <ul> list properties
+// --------------------------------------------------------
+@mixin list-reset() {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+// --------------------------------------------------------------------
+//   MAP BREAKPOINTS - Mixin for creating classes with breakpoint key
+// --------------------------------------------------------------------
+@mixin map-breakpoints($class_name) {
+  @each $breakpoint_key, $breakpoint_value in $breakpoints {
+    @if $breakpoint_key == xxs {
+      #{$class_name} {
+        @content;
+      }
+    } @else {
+      #{$class_name}-#{$breakpoint_key} {
+        @include media($breakpoint_key) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------------
+//   MEDIA - Mixin that enables using styling for a specific breakpoint
+//   How to use:
+//
+//      selector {
+//        @include media(xs, max) {
+//          // put here stylings for the specified media breakpoint
+//        }
+//      }
+//
+// ----------------------------------------------------------------------
+@mixin media($breakpoint-name, $type: min) {
+  $breakpoint-pixels: map-contains($breakpoints, $breakpoint-name);
+
+  @if $breakpoint-pixels {
+    @if $type == max {
+      $breakpoint-pixels: $breakpoint-pixels - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $breakpoint-pixels) {
+      @content;
+    }
+  }
+}
+
+// -------------------------------------------------------------
+//   PLACEHOLDER - Mixin that enables styling the placeholders
+//   How to use:
+//
+//      input {
+//        @include placeholder {
+//          // put here stylings for the placeholder
+//        }
+//      }
+//
+// -------------------------------------------------------------
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// ----------------------------------------------------------------
+//   TRANSITION - Mixin for setting the 'transition' property
+//   How to use:
+//
+//   selector {
+//     // Pass in just CSS property name(s) separated with comma:
+//     @include transition(color, background-color);
+//   }
+// ----------------------------------------------------------------
+@mixin transition($args...) {
+  // Declare empty list and fill it in the loop
+  $props: ();
+  @each $prop in $args {
+    @if type-of($prop) == string {
+      $props: append(
+        $props,
+        $prop $transition-duration $transition-timing,
+        "comma"
+      );
+    } @else {
+      $props: append($props, $prop, "comma");
+    }
+  }
+  @if $props == () {
+    $props: append(
+      $props,
+      all $transition-duration $transition-timing,
+      "comma"
+    );
+  }
+  transition: $props;
+}
+
+// ----------------------------------------------------------
+//   TRUNCATE - Mixin that sets stylings for truncated text
+// ----------------------------------------------------------
+@mixin truncate($number-of-lines: 1, $boundary: 100%) {
+  max-width: $boundary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if $number-of-lines > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $number-of-lines;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  } @else {
+    display: table-cell;
+    white-space: nowrap;
+  }
+}
+
+// -----------------------------------------------------------------------------------------------------
+//   TYPOGRAPHY - Mixin for setting 'color', 'font-size', 'font-weight' and 'font-family' for the text
+// -----------------------------------------------------------------------------------------------------
+@mixin typography(
+  $color: inherit,
+  $size: false,
+  $weight: false,
+  $line-height: false,
+  $family: false,
+  $text-align: false
+) {
+  color: text-color($color);
+
+  @if $size {
+    font-size: font-size($size);
+  }
+
+  @if $weight {
+    font-weight: font-weight($weight);
+  }
+
+  @if $line-height {
+    line-height: line-height($line-height);
+  }
+
+  @if $family {
+    font-family: font-family($family);
+  }
+
+  @if $text-align {
+    text-align: text-align($text-align);
+  }
+}
+
+// ------------------------------------------------------------------------------------------
+//   PROPERTY-MODIFIER - Generates CSS classes based on the provided '$map' and '$property'
+// ------------------------------------------------------------------------------------------
+@mixin property-modifier($map, $property) {
+  @each $name, $value in $map {
+    &-#{"" + $name} {
+      #{$property}: $value;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------------------------------
+//   ELEMENT-SIZE - Mixin for setting 'width', 'min-width', 'height' and 'min-height' for the element
+// ----------------------------------------------------------------------------------------------------
+@mixin element-size($size) {
+  width: $size;
+  min-width: $size;
+  height: $size;
+  min-height: $size;
+}
+
+// ------------------------------------------------------------------
+//   INTERACTIVE - Set CSS properties for interactive HTML elements
+// ------------------------------------------------------------------
+@mixin interactive($size: full) {
+  @include transition(color, border-color, background-color);
+  @include element-size(interactive-size($size));
+  width: auto;
+  border: border(transparent);
+  border-radius: border-radius();
+  background-color: transparent;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
+//   ABSOLUTE - Mixin for setting 'position: absolute;' and relevant positions for the element
+// ---------------------------------------------------------------------------------------------
+@mixin absolute(
+  $left: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $transform: false
+) {
+  position: absolute;
+
+  @if $left {
+    left: $left;
+  }
+
+  @if $top {
+    top: $top;
+  }
+
+  @if $right {
+    right: $right;
+  }
+
+  @if $bottom {
+    bottom: $bottom;
+  }
+
+  @if $transform {
+    transform: $transform;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
+//   POSITION - Mixin for setting position and relevant positions for the element
+// ---------------------------------------------------------------------------------------------
+@mixin position(
+  $position: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  $transform: false
+) {
+  @if $position {
+    position: $position;
+  }
+
+  @if $top {
+    top: $top;
+  }
+
+  @if $right {
+    right: $right;
+  }
+
+  @if $bottom {
+    bottom: $bottom;
+  }
+
+  @if $left {
+    left: $left;
+  }
+
+  @if $transform {
+    transform: $transform;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
+//   DISPLAY - Mixin for setting element size
+// ---------------------------------------------------------------------------------------------
+@mixin size(
+  $width: false,
+  $height: false,
+  $full-width: false,
+  $full-height: false
+) {
+  @if $width {
+    width: $width;
+  }
+
+  @if $height {
+    height: $height;
+  }
+
+  @if $full-width {
+    width: 100%;
+  }
+
+  @if $full-height {
+    height: 100%;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------
+//   CARD - Mixin for setting element style in shape of card
+// ---------------------------------------------------------------------------------------------
+@mixin card($max-width: false) {
+  @if $max-width {
+    max-width: $max-width;
+  }
+
+  border-radius: border-radius(large);
+  background: rgba(20, 20, 20, 0.5);
+  box-shadow: $box-shadow-hover;
+  padding: $spacing-8x;
+}
+
+// ---------------------------------------------------------------------------------------------
+//   CONTAINER - Mixin for container styles to a view section
+// ---------------------------------------------------------------------------------------------
+@mixin container($gap: false) {
+  @if $gap {
+    gap: $gap;
+  }
+
+  @include flex(column, $justify: center, $align: center);
+  min-height: 45rem;
+  padding: $spacing-8x;
+}
