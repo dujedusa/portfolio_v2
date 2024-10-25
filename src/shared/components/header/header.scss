@@ -1,0 +1,77 @@
+@import "../../../styles/00_settings/settings.scss";
+
+$header-height: 4rem;
+
+.header {
+  @include flex(column, $align: center);
+  @include typography(inherit, regular, regular, regular, text);
+  @include position(fixed, 0);
+  @include size($full-width: true);
+  backdrop-filter: blur(1rem);
+  background: rgba(20, 20, 20, 0.5);
+  box-shadow: box-shadow($y: 0.25rem, $blur: 2rem, $color: black);
+  padding: 0 $spacing-8x;
+  z-index: 100;
+
+  @include media(xl) {
+    padding: 0 calc((100vw - $breakpoint-xl) / 2);
+  }
+
+  &__wrapper {
+    @include flex(column);
+    @include size($full-width: true);
+
+    @include media(xl) {
+      padding: 0 $spacing-8x;
+    }
+  }
+
+  &__main {
+    @include flex($align: center, $justify: space-between);
+    min-height: 4rem;
+  }
+
+  & svg {
+    @include transition(color);
+
+    &:hover,
+    &:focus {
+      color: text-color(secondary);
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  &-nav {
+    @include flex($gap: $spacing-4x);
+
+    &-collapse {
+      @include flex(column, $align: center, $gap: $spacing-4x);
+      @include size($height: 10rem);
+      @include transition(height, opacity);
+      opacity: 1;
+
+      &[aria-hidden="true"] {
+        @include size($height: 0);
+        overflow: hidden;
+        opacity: 0;
+      }
+    }
+  }
+
+  &-title {
+    font-size: font-size(large);
+    font-weight: font-weight(bold);
+  }
+
+  &-link {
+    @include transition(color);
+
+    &:hover,
+    &:focus {
+      color: text-color(secondary);
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}

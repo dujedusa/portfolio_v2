@@ -1,0 +1,84 @@
+@import "../../../styles/00_settings/settings.scss";
+
+.input {
+  @include flex(column, $gap: $spacing-2x);
+  @include size($full-width: true);
+  @include position(relative);
+
+  &__label {
+    @include typography(inherit, regular);
+  }
+
+  &__wrapper {
+    @include flex($justify: center, $align: center, $gap: $spacing-4x);
+    @include transition(background-color, box-shadow, border-color);
+    border: border(neutral-color(primary));
+    min-height: 2.5rem;
+    color: neutral-color(black);
+    background-color: neutral-color(primary);
+    padding: $spacing-2x $spacing-3x;
+    border-radius: border-radius(large);
+
+    & input,
+    & textarea {
+      color: neutral-color(black);
+      min-width: auto;
+    }
+
+    & textarea {
+      padding: 0;
+
+      & + svg {
+        align-self: flex-start;
+      }
+    }
+
+    &:hover,
+    &:active,
+    &:focus-within {
+      background-color: neutral-color(light);
+      box-shadow: $box-shadow-hover;
+    }
+  }
+
+  &__error {
+    border-color: semantic-color(error);
+    background-color: semantic-color(error-light);
+
+    &-text {
+      @include absolute($bottom: -$spacing-5x);
+      @include transition(opacity, height, width);
+      color: semantic-color(error);
+      font-size: font-size(smaller);
+      opacity: 0;
+
+      &--visible {
+        @include size($height: fit-content, $width: fit-content);
+        opacity: 1;
+      }
+    }
+  }
+
+  &--required &__label::after {
+    content: "*";
+  }
+
+  &__clear-icon {
+    @include transition(color, opacity, height, width);
+    @include size($height: 0, $width: 0);
+    color: neutral-color(black);
+    opacity: 0;
+
+    &:hover,
+    &:focus {
+      color: neutral-color(secondary);
+      cursor: pointer;
+      outline: none;
+    }
+
+    &--visible {
+      @include size($height: 1.25rem, $width: 1.25rem);
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "../../styles/00_settings/settings.scss";
+
+.contact {
+  @include container;
+  @include flex(row);
+  margin-top: $spacing-16x;
+  // 100 viewport height - footer height - margin-top
+  min-height: calc(100vh - 20rem - 4rem);
+
+  &__wrapper {
+    @include flex(column, $gap: $spacing-16x, $gsb: 1);
+    @include card($max-width: 50rem);
+  }
+
+  &__title {
+    @include typography(inherit, huge, bold);
+    margin-bottom: $spacing-4x;
+  }
+
+  &__text {
+    @include flex(column, $align: center);
+    text-align: text-align(center);
+
+    & span {
+      @include typography(inherit, medium, regular, regular);
+    }
+  }
+
+  &__form {
+    @include flex(column, $gap: $spacing-8x);
+
+    &--row {
+      @include flex($align: baseline, $gsb: 1, $gap: $spacing-8x);
+      @include media(sm, max) {
+        flex-wrap: wrap;
+      }
+    }
+
+    & button {
+      @include size($width: fit-content);
+    }
+  }
+}

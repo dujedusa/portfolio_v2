@@ -1,0 +1,15 @@
+@import "../../../styles/00_settings/settings.scss";
+
+.button {
+  color: neutral-color(black);
+  background-color: neutral-color(light);
+  padding: 0 $spacing-8x;
+  border-radius: border-radius(large);
+  font-weight: font-weight(regular);
+
+  &:hover,
+  &:active {
+    background-color: neutral-color(primary);
+    box-shadow: $box-shadow-hover;
+  }
+}

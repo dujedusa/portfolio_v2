@@ -1,0 +1,23 @@
+@import "../../styles/00_settings/settings.scss";
+
+.about {
+  @include container;
+  background-image: url("../../assets/images/drum_set.jpg");
+  background-position: 50%;
+  background-size: cover;
+
+  &__title {
+    @include typography(inherit, huge, bold);
+    margin-bottom: $spacing-8x;
+  }
+
+  &-text {
+    @include flex(column, $gap: $spacing-2x);
+    @include card($max-width: 50rem);
+    text-align: text-align(center);
+
+    & p {
+      @include typography(inherit, medium, regular, regular);
+    }
+  }
+}

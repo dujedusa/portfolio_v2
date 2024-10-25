@@ -1,0 +1,9 @@
+{
+  "icons": [
+    {
+      "src": "profile_photo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    }
+  ]
+}

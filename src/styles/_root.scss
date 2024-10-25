@@ -1,0 +1,50 @@
+// ------------------------------------------------------
+//   ROOT - stylings and CSS variables for root element
+// ------------------------------------------------------
+:root {
+  // Primary color palette
+  --primary-color-1: #f9f9fa;
+  --primary-color-2: #f1f0fc;
+  --primary-color-3: #b7b5ef;
+  --primary-color-4: #7e7ae2;
+  --primary-color-5: #534ed8;
+  --primary-color-6: #262299;
+  --primary-color-7: #141251;
+  --primary-color-8: #110f45;
+  --primary-color-9: #0e0d3b;
+  --primary-color-10: #0a0929;
+
+  // Gray color palette
+  --gray-color-10: #e8e8e8;
+  --gray-color-20: #d1d1d1;
+  --gray-color-30: #b9b9b9;
+  --gray-color-40: #a2a2a2;
+  --gray-color-50: #8b8b8b;
+  --gray-color-60: #747474;
+  --gray-color-70: #5d5d5d;
+  --gray-color-80: #454545;
+  --gray-color-90: #2e2e2e;
+  --gray-color-100: #171717;
+
+  // Semantic color variables
+  --semantic-success: #2e987f;
+  --semantic-success-light: #d7e7e3;
+  --semantic-error: #ec1b4b;
+  --semantic-error-light: #fbd1db;
+  --semantic-warning: #ff8b00;
+  --semantic-warning-light: #ffe8cc;
+  --semantic-info: #1668bd;
+  --semantic-info-light: #d0e1f2;
+
+  // Font family variables
+  --font-family-text: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-icon: "icomoon";
+
+  // Border radius
+  --border-radius: 0.25rem;
+
+  // for Google Fonts
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}

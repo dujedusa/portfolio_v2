@@ -1,0 +1,29 @@
+// ========================
+//   TEXT UTILITY CLASSES
+// ========================
+.text-color {
+  @include property-modifier($text-colors, color);
+}
+
+.text-size {
+  @include property-modifier($font-sizes, font-size);
+}
+
+.text-weight {
+  @include property-modifier($font-weights, font-weight);
+}
+
+.text-align {
+  @include property-modifier($text-aligns, text-align);
+}
+
+.text-truncate {
+  @include truncate();
+
+  // Create classes for truncating from 2 up to 6 lines of text
+  @for $i from 2 through 6 {
+    &--#{$i}-lines {
+      @include truncate($i);
+    }
+  }
+}

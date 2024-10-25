@@ -1,0 +1,52 @@
+@import "../../../styles/00_settings/settings.scss";
+
+.timeline {
+  @include list-reset;
+  max-width: 50rem;
+
+  @include media(xs, max) {
+    @include flex;
+    @include size($height: 25rem, $width: calc(100vw - $spacing-8x));
+    padding: 0 $spacing-4x;
+    overflow-x: scroll;
+  }
+
+  &-item {
+    &:nth-child(2n) {
+      flex-direction: row;
+
+      @include media(sm, max) {
+        flex-direction: row-reverse;
+      }
+
+      @include media(xs, max) {
+        flex-direction: column !important;
+      }
+    }
+
+    &:nth-child(2n) &__timestamp {
+      justify-content: flex-end;
+
+      @include media(sm, max) {
+        justify-content: flex-start;
+      }
+
+      @include media(xs, max) {
+        align-items: flex-end;
+      }
+    }
+
+    &:nth-child(2n) &__content {
+      @include media(xs, max) {
+        justify-content: flex-start;
+      }
+    }
+
+    @include media(xs, max) {
+      flex-direction: column-reverse !important;
+      min-width: calc(100vw - $spacing-8x);
+      padding-right: $spacing-8x;
+      padding-bottom: 0 !important;
+    }
+  }
+}

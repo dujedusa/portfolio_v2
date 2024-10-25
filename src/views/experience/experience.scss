@@ -1,0 +1,55 @@
+@import "../../styles/00_settings/settings.scss";
+
+.experience {
+  @include container($spacing-16x);
+
+  &__title {
+    @include typography(inherit, huge, bold);
+    @include size($full-width: true);
+    text-align: text-align(center);
+  }
+
+  &-item {
+    @include flex(column, $gap: $spacing-2x);
+    @include card;
+
+    @include media(xs, max) {
+      @include size($height: 10rem);
+      overflow: scroll;
+    }
+
+    & a,
+    & h1 {
+      @include typography(inherit, large, regular, regular);
+    }
+
+    & a {
+      @include transition(color, border-color);
+      @include size($width: fit-content);
+      border-bottom: border($color: transparent);
+
+      &:hover,
+      &:focus {
+        color: text-color(secondary);
+        border-color: text-color(secondary);
+        cursor: pointer;
+        outline: none;
+      }
+    }
+
+    & p {
+      @include typography(inherit, small, regular, regular);
+      margin: 0;
+    }
+
+    & ul {
+      @include flex(column, $gap: $spacing-2x);
+      padding-left: $spacing-2x;
+    }
+
+    & li {
+      @include typography(inherit, small, regular, regular);
+      @include flex($align: center, $gap: $spacing-4x);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+// ==========================================================
+//   OVERFLOW - various overflow utility stylings and classes
+// ==========================================================
+
+// --------------------------------------------------------------------------------------------
+//   Generates the following Overflow classes:
+//     scroll
+//     scroll-x
+//     scroll-y
+//     hidden
+//     hidden-x
+//     hidden-y
+// --------------------------------------------------------------------------------------------
+$properties: ('scroll', 'hidden');
+$directions: ('', '-x', '-y');
+
+@each $property in $properties {
+  @each $direction in $directions {
+    #{'.' + $property + $direction} {
+      #{'overflow' + $direction}: #{$property};
+    }
+  }
+}

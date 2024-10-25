@@ -1,0 +1,57 @@
+// -------------------------------------------------------
+//   INPUT: Stylings for <input> and <textarea> elements
+// -------------------------------------------------------
+input,
+textarea {
+  @include interactive(full);
+  @include typography(primary, regular, regular, $family: text);
+  @include placeholder() {
+    color: neutral-color(secondary);
+  }
+  width: 100%;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill::first-line,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active,
+  &:-internal-autofill-previewed,
+  &:autofill {
+    -webkit-text-fill-color: text-color(primary);
+    box-shadow: 0 0 0 interactive-size(full) theme-color(light) inset;
+  }
+
+  // Hide browser's 'clear search' icon
+  &[type="search"] {
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+  }
+
+  // Hide browser's up and down arrows for number inputs
+  &[type="number"] {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &[type="file"] {
+    display: none;
+  }
+}
+
+textarea {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding-top: $spacing-2x;
+  padding-bottom: $spacing-2x;
+}

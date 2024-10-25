@@ -1,0 +1,15 @@
+// ------------------------------------
+//   ANCHOR: Stylings for <a> element
+// ------------------------------------
+a {
+  @include typography(inherit);
+  @include transition(color, border-color);
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: text-color(secondary);
+    cursor: pointer;
+    outline: none;
+  }
+}

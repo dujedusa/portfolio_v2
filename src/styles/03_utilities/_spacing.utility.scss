@@ -1,0 +1,37 @@
+// ==========================================================
+//   SPACING - various spacing utility stylings and classes
+// ==========================================================
+
+// --------------------------------------------------------------------------------------------
+//   Generates the following Spacing classes:
+//     p-[0/auto/1x..25x]
+//     p-[0/auto/1x..25x]-[breakpoint_key]
+//     p[t/r/b/l]-[0/auto/1x..25x]
+//     p[t/r/b/l]-[0/auto/1x..25x]-[breakpoint_key]
+//     m-[0/auto/1x..25x]
+//     m-[0/auto/1x..25x]-[breakpoint_key]
+//     m[t/r/b/l]-[0/auto/1x..25x]
+//     m[t/r/b/l]-[0/auto/1x..25x]-[breakpoint_key]
+// --------------------------------------------------------------------------------------------
+$properties: (
+  m: 'margin',
+  p: 'padding'
+);
+
+$directions: (
+  '': '',
+  t: '-top',
+  r: '-right',
+  b: '-bottom',
+  l: '-left'
+);
+
+@each $property_key, $property_value in $properties {
+  @each $direction_key, $direction_value in $directions {
+    @each $spacing_key, $spacing_value in $spacings {
+      @include map-breakpoints('.' + #{$property_key + $direction_key}-#{$spacing_key}) {
+        #{$property_value + $direction_value}: #{$spacing_value};
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import "../../styles/00_settings/settings.scss";
+
+.testimonials {
+  @include container($spacing-16x);
+  justify-content: flex-start;
+
+  &__title {
+    @include typography(inherit, huge, bold);
+  }
+
+  &-text {
+    @include flex(column, $gap: $spacing-16x);
+    @include card($max-width: 50rem);
+    text-align: text-align(center);
+
+    & > p {
+      @include typography(inherit, medium, regular, large);
+      @include flex($align: center, $gsb: 1);
+      margin: 0;
+      font-style: oblique;
+    }
+
+    & a {
+      @include flex($justify: center);
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+
+    & strong {
+      @include typography(inherit, regular, bold, large);
+    }
+
+    & p {
+      @include typography(inherit, regular, regular, regular);
+    }
+  }
+}

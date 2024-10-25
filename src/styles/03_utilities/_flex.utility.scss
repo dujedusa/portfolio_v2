@@ -1,0 +1,87 @@
+// ========================
+//   FLEX UTILITY CLASSES
+// ========================
+
+// --------------------------------------------------------------------------------------------
+//   Generates the following Flex classes:
+//     flex-[row/column/row-reverse/column-reverse/wrap/wrap-reverse/nowrap]
+//     flex-[row/column/row-reverse/column-reverse/wrap/wrap-reverse/nowrap]-[breakpoint_key]
+//     justify-[start/end/center/stretch/between/around/evenly]
+//     justify-[start/end/center/stretch/between/around/evenly]-[breakpoint_key]
+//     align-[start/end/center/stretch/baseline]
+//     align-[start/end/center/stretch/baseline]-[breakpoint_key]
+//     align-self-[start/end/center/stretch/baseline]
+//     align-self-[start/end/center/stretch/baseline]-[breakpoint_key]
+//     order-[0..5]
+//     order-[0..5]-[breakpoint_key]
+// --------------------------------------------------------------------------------------------
+
+// -----------------------------------------------------------
+//   FLEX - generating '.flex-[option]-[breakpoint]' classes
+// -----------------------------------------------------------
+$directions: row, row-reverse, column, column-reverse;
+$wraps: wrap, wrap-reverse, nowrap;
+@each $option in join($directions, $wraps, comma) {
+  @include map-breakpoints('.flex-' + #{$option}) {
+    @if list-contains($directions, $option) {
+      @include flex($option);
+    } @else {
+      @include flex($wrap: $option);
+    }
+  }
+}
+
+$base: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch
+);
+
+// -----------------------------------------------------------------
+//   JUSTIFY - generating '.justify-[option]-[breakpoint]' classes
+// -----------------------------------------------------------------
+$justifies: map-merge(
+  $base,
+  (
+    between: space-between,
+    around: space-around,
+    evenly: space-evenly
+  )
+);
+@each $justify_key, $justify_value in $justifies {
+  @include map-breakpoints('.justify-' + #{$justify_key}) {
+    @include flex($justify: $justify_value);
+  }
+}
+
+// -----------------------------------------------------------------------------------------------------
+//   ALIGN - generating '.align-[option]-[breakpoint]' and '.align-self-[option]-[breakpoint]' classes
+// -----------------------------------------------------------------------------------------------------
+$aligns: map-merge(
+  $base,
+  (
+    baseline: baseline
+  )
+);
+@each $align_key, $align_value in $aligns {
+  @include map-breakpoints('.align-' + #{$align_key}) {
+    @include flex($align: $align_value);
+  }
+  @include map-breakpoints('.align-self-' + #{$align_key}) {
+    align-self: $align_value;
+  }
+}
+
+// -----------------------------------------------------------------------
+//   ORDER - generating '.order-[i]' classes where "i" goes from 0 to 10
+// -----------------------------------------------------------------------
+@for $i from 0 through 5 {
+  @include map-breakpoints('.order-' + #{$i}) {
+    order: $i;
+  }
+}
+
+.flex-fill {
+  flex-grow: 1;
+}

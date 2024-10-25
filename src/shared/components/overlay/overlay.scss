@@ -1,0 +1,18 @@
+@import "../../../styles/00_settings/settings.scss";
+
+.overlay {
+  @include flex(column, $align: center, $justify: center);
+  @include size($full-height: true, $full-width: true);
+  @include position(fixed, 0);
+  @include transition(opacity, height, width);
+  background: rgba(20, 20, 20, 0.5);
+  backdrop-filter: blur(1rem);
+  z-index: 1000;
+  opacity: 1;
+  pointer-events: none;
+
+  &[aria-hidden="true"] {
+    @include size($height: 0, $width: 0);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,60 @@
+@import "../../../styles/00_settings/settings.scss";
+
+.footer {
+  @include flex(column, $align: center, $gap: $spacing-8x);
+  min-height: 20rem;
+  background: rgba(20, 20, 20, 0.5);
+  box-shadow: box-shadow($y: 0.25rem, $blur: 2rem, $color: black);
+  padding: $spacing-8x;
+
+  &__text {
+    @include flex(column, $align: center, $gap: $spacing-2x);
+    text-align: text-align(center);
+
+    & span:first-child {
+      @include typography(inherit, medium);
+    }
+
+    & span:nth-child(2) {
+      @include typography(inherit, regular);
+    }
+  }
+
+  &__icons {
+    @include flex($gap: $spacing-4x);
+
+    & a:hover,
+    & a:focus {
+      outline: none;
+
+      & svg {
+        @include transition(box-shadow);
+        box-shadow: $box-shadow-hover;
+      }
+    }
+  }
+
+  &__attributions {
+    all: unset;
+    @include typography(inherit, regular);
+    @include transition(color, border-color);
+    border-bottom: border($color: transparent);
+
+    &:hover,
+    &:focus {
+      color: text-color(secondary);
+      border-color: text-color(secondary);
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  &__copyright {
+    @include typography(inherit, regular);
+    margin: 0;
+  }
+
+  & .divider {
+    width: calc(100% + 2 * $spacing-8x);
+  }
+}

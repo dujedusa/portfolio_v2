@@ -1,0 +1,8 @@
+// -----------------------------------------
+//   BUTTON: Stylings for <button> element
+// -----------------------------------------
+button {
+  @include interactive(normal);
+  @include typography(inherit, regular, semibold, $family: text);
+  cursor: pointer;
+}
